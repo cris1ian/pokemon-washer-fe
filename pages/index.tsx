@@ -1,7 +1,7 @@
 import React from "react";
 import PokemonList from "../src/components/PokemonList";
 
-const Home = () => {
+export default function Home () {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/pokemon`;
 
   return (
@@ -12,4 +12,3 @@ const Home = () => {
   );
 };
 
-export default Home;
