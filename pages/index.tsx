@@ -1,8 +1,8 @@
-import React from 'react';
-import PokemonList from '../app/components/PokemonList';
+import React from "react";
+import PokemonList from "../src/components/PokemonList";
 
 const Home = () => {
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10';
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/pokemon`;
 
   return (
     <div>

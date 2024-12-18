@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { PokemonResponse } from '../types/pokemon';
+import { useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
+import { ApiResp } from "../models/api-resp";
+import { Pokemon } from "../models/pokemon";
 
 const usePokemon = (url: string) => {
-  const [data, setData] = useState<PokemonResponse | null>(null);
+  const [data, setData] = useState<Pokemon[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -12,10 +13,11 @@ const usePokemon = (url: string) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(url);
-        setData(response.data);
+        const response: AxiosResponse<ApiResp<Pokemon[]>> = await axios.get(url);
+        console.log({ response });
+        setData(response.data.data);
       } catch (err) {
-        setError('Failed to fetch data');
+        setError("Failed to fetch data");
       } finally {
         setLoading(false);
       }

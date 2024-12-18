@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Pokemon } from '../types/pokemon';
-import PokemonItem from './PokemonItem';
-import Pagination from './Pagination';
-import usePokemon from '../hooks/usePokemon';
+import React, { useState } from "react";
+import { Pokemon } from "../models/pokemon";
+import PokemonItem from "./PokemonItem";
+import Pagination from "./Pagination";
+import usePokemon from "../hooks/usePokemon";
 
 interface PokemonListProps {
   apiUrl: string;
@@ -18,13 +18,13 @@ const PokemonList: React.FC<PokemonListProps> = ({ apiUrl }) => {
   return (
     <div>
       <div>
-        {data?.results.map((pokemon) => (
+        {data?.map((pokemon: Pokemon) => (
           <PokemonItem key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
       <Pagination
-        currentPage={data?.next || ''}
-        previousPage={data?.previous || ''}
+        currentPage={data?.next ?? ""}
+        previousPage={data?.previous ?? ""}
         onPageChange={setUrl}
       />
     </div>
