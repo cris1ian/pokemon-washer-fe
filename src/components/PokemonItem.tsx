@@ -8,7 +8,8 @@ interface PokemonItemProps {
 const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon }) => {
   return (
     <div>
-      <h3 className="capitalize font-bold text-xl">{pokemon.name}</h3>
+      <h3 className="capitalize font-bold text-m">{pokemon.name}</h3>
+      <h3 className="capitalize font-bold text-m">{pokemon.id}</h3>
       <img src={pokemon.spriteUrl ?? undefined} alt={pokemon.name} />
     </div>
   );

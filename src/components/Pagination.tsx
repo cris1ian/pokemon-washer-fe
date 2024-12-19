@@ -1,26 +1,27 @@
 import React from "react";
 
 interface PaginationProps {
+  step: number;
   offset: number;
   count: number;
-  onPageChange: (url: number) => void;
+  setOffset: (url: number) => void;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
+  step,
   offset,
   count,
-  onPageChange,
+  setOffset,
 }) => {
-  const step = 12;
-
   const onPrevClick = () => {
-    if (+(offset || 0) < 1) return;
-    onPageChange(offset - step);
+    if (+offset < 1) return;
+    setOffset(offset - step < 0 ? 0 : offset - step);
   };
 
   const onNextClick = () => {
-    if (offset + step < count) return;
-    onPageChange(offset + step);
+    console.log(offset + step, count);
+    if (offset + step > count) return;
+    setOffset(offset + step);
   };
 
   return (
@@ -33,7 +34,7 @@ const Pagination: React.FC<PaginationProps> = ({
         Previous
       </button>
       <div className="font-bold text-l align-middle mx-4">
-        {Math.ceil((offset + step) / count)} / {Math.ceil(count / step)}
+        {Math.ceil(offset / step)} / {Math.ceil(count / step)}
       </div>
       <button
         className="bg-blue-500 text-white font-bold  mx-4 py-2 px-4 rounded hover:bg-blue-600 min-w-40"

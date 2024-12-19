@@ -1,2 +1,2 @@
-const Loading = () => <div>Loading...</div>;
+const Loading = () => <div className="text-center text-xl">Loading...</div>;
 export default Loading;
