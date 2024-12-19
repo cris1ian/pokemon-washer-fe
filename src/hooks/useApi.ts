@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ApiResp, RespData } from "../models/api-resp";
 import { IPokemon } from "../models/pokemon";
 import { API_URL } from "../constants/api";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
 
-const useApi = (offset: number, limit: number) => {
+const useApi = () => {
+  const endpoint: string = `${API_URL}/pokemon`;
+
+  const limit = useSelector((state: RootState) => state.pagination.step);
+  const offset = useSelector((state: RootState) => state.pagination.offset);
+
   const [data, setData] = useState<RespData<IPokemon> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  const endpoint: string = `${API_URL}/pokemon`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +36,7 @@ const useApi = (offset: number, limit: number) => {
     };
 
     fetchData();
-  }, [offset]);
+  }, [offset, limit]);
 
   return { data, loading, error };
 };
