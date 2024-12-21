@@ -1,3 +1,4 @@
 ﻿/node_modules
 .next/static/webpack
 .next
+.env

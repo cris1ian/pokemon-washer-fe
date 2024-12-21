@@ -1,0 +1,22 @@
+services:
+  pokemon-washer:
+    # set name for the image
+    image: pokemon-washer_i
+
+    # Set the container name
+    container_name: pokemon-washer_c
+
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3000/api/v1 # Set the environment variable for API Calls
+
+    # Build the image using the Dockerfile in the current context
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Map host port 8000 to container port 8000
+    ports:
+      - "8000:8000" #<host_port>:<container_port/protocol_port>
+
+      # Automatically restart the container if it stops
+    restart: always
