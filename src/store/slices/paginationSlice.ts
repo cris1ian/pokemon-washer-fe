@@ -15,10 +15,12 @@ const paginationSlice = createSlice({
   initialState,
   reducers: {
     decrement: (state) => {
-      state.offset = state.offset - state.step < 0 ? 0 : state.offset - state.step;
+      if (state.offset - state.step < 0) state.offset = 0;
+      else state.offset -= state.step;
     },
-    increment: (state) => {
-      state.offset += state.step;
+    increment: (state, action: PayloadAction<number>) => {
+      if (state.offset + state.step < action.payload)
+        state.offset += state.step;
     },
     changeStep: (state, action: PayloadAction<number>) => {
       state.step = action.payload;

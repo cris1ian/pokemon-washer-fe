@@ -26,7 +26,6 @@ const useApi = () => {
           endpoint,
           { params }
         );
-        console.log({ response });
         setData(response.data.data);
       } catch (err) {
         setError("Failed to fetch data");
