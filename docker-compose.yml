@@ -1,13 +1,10 @@
 services:
-  pokemon-washer:
+  pokemon-washer-fe:
     # set name for the image
-    image: pokemon-washer_i
+    image: pokemon-washer-fe_i
 
     # Set the container name
-    container_name: pokemon-washer_c
-
-    environment:
-      NEXT_PUBLIC_API_URL: http://localhost:3000/api/v1 # Set the environment variable for API Calls
+    container_name: pokemon-washer-fe_c
 
     # Build the image using the Dockerfile in the current context
     build:

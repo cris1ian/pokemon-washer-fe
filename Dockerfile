@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the production app
-CMD ["npm","run","build"]
+RUN npm run build
 
 
 # Stage 2: Use a lightweight Node.js image for serving
