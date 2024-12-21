@@ -1,1 +1,5 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# Frontend Pokemon Take Home Challenge for Poplin
+
+For starting the app simply type:
+
+```docker-compose up```
